@@ -13,8 +13,14 @@ from brain.graph import diff_graph, merge_branch, reject_branch
 from brain.search import entities, recent_changes, search
 from brain.storage import latest_branch, list_branches, load_branch
 
-HOST = "127.0.0.1"
-PORT = 8080
+import os
+
+port = int(os.environ.get("PORT", 8080))
+
+app.run(
+    host="0.0.0.0",
+    port=port
+)
 
 
 def html_page() -> str:
