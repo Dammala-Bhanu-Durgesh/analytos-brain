@@ -14,8 +14,11 @@ from brain.search import entities, recent_changes, search
 from brain.storage import latest_branch, list_branches, load_branch
 
 
-HOST = "127.0.0.1"
-PORT = 8080
+import os
+
+HOST = "0.0.0.0"
+PORT = int(os.environ.get("PORT", 8080))
+
 
 
 def html_page() -> str:
