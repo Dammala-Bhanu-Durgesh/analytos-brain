@@ -1,0 +1,38 @@
+// Cedar-style policy bundle for the Analytos Brain graph.
+// The local runtime mirrors these rules in src/brain/policy.py.
+
+permit(
+  principal in Role::"content-agent",
+  action == Action::"read",
+  resource
+)
+when {
+  resource.type in ["Product", "Feature", "ProofPoint", "Persona", "ICPSegment", "Decision"] &&
+  resource.visibility == "public"
+};
+
+permit(
+  principal in Role::"gtm-agent",
+  action == Action::"read",
+  resource
+)
+when {
+  resource.type in ["Product", "Feature", "ProofPoint", "Persona", "ICPSegment"] &&
+  resource.visibility == "public"
+};
+
+permit(
+  principal in Role::"reviewer",
+  action in [Action::"read", Action::"approve", Action::"merge"],
+  resource
+);
+
+forbid(
+  principal in Role::"content-agent",
+  action == Action::"read",
+  resource
+)
+when {
+  resource.type == "EmailThread" || resource.visibility == "restricted"
+};
+

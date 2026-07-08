@@ -1,0 +1,13 @@
+version: 1
+metadata:
+  name: analytos-brain
+storage: s3://analytos-brain/clusters/local-dev
+graphs:
+  knowledge:
+    schema: schema.pg
+    queries: queries/
+policies:
+  base:
+    file: cedar.policy
+    applies_to: [knowledge]
+

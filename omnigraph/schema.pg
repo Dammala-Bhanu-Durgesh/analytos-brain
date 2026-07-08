@@ -1,0 +1,68 @@
+node Product {
+  id: String @key
+  name: String
+  description: String
+  positioning: String
+  visibility: String
+}
+
+node Feature {
+  id: String @key
+  name: String
+  description: String
+  visibility: String
+}
+
+node ProofPoint {
+  id: String @key
+  metric: String
+  value: String
+  context: String
+  visibility: String
+}
+
+node Persona {
+  id: String @key
+  name: String
+  owns: String
+  visibility: String
+}
+
+node ICPSegment {
+  id: String @key
+  name: String
+  firmographics: String
+  triggers: String
+  competitors: String
+  visibility: String
+}
+
+node Person {
+  id: String @key
+  name: String
+  role: String
+  visibility: String
+}
+
+node EmailThread {
+  id: String @key
+  subject: String
+  summary: String
+  classification: String
+  visibility: String
+}
+
+node Decision {
+  id: String @key
+  statement: String
+  visibility: String
+}
+
+edge HAS_FEATURE: Product -> Feature
+edge PROVEN_BY: Product -> ProofPoint
+edge TARGETS: Product -> ICPSegment
+edge SERVES_PERSONA: Product -> Persona
+edge DISCUSSED_IN: Product -> EmailThread
+edge DECIDED_BY: Decision -> Person
+edge THREAD_DECISION: EmailThread -> Decision
+

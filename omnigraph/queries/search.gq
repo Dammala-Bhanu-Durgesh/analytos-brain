@@ -1,0 +1,6 @@
+query search_approved($q: String) {
+  search hybrid $q over [Product, Feature, ProofPoint, Persona, ICPSegment, Decision]
+  where visibility = "public"
+  return { id, type, name, description, metric, value, context }
+}
+

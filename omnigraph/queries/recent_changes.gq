@@ -1,0 +1,11 @@
+query recent_changes() {
+  commits(limit: 20) {
+    id
+    branch
+    actor
+    approved_by
+    timestamp
+    summary
+  }
+}
+

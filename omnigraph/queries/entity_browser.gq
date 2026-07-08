@@ -1,0 +1,6 @@
+query entity_browser() {
+  match { $n }
+  where $n.visibility = "public"
+  return { $n.id, $n.type, $n.name }
+}
+
